@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Amaan - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        @keyframes gradientBackground {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .container {
+            max-width: 65%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 100px 0 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-image: url('https://source.unsplash.com/random/1600x900/?technology');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            transform: translateZ(-1px) scale(2);
+        }
+
+        .animated-item {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+            mix-blend-mode: overlay;
+        }
+
+        .animated-item:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-duration: 12s;
+        }
+
+        .animated-item:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 20%;
+            animation-duration: 15s;
+        }
+
+        .animated-item:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 30%;
+            animation-duration: 18s;
+        }
+
+        .animated-item:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            bottom: 10%;
+            right: 10%;
+            animation-duration: 20s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        header .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 10px 0;
+            flex-wrap: wrap;
+            transition: background-color 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #03dac6;
+            transform: scale(1.1);
+        }
+
+        h1, h2, h3 {
+            color: #bb86fc;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #bb86fc;
+            margin-bottom: 20px;
+            animation: profileImage 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
+        }
+        .profile img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        @keyframes profileImage {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        .section {
+            background-color: rgba(30, 30, 30, 0.8);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .project, .experience, .education {
+            margin-bottom: 20px;
+            border-left: 3px solid #03dac6;
+            padding-left: 15px;
+            transition: transform 0.3s;
+        }
+
+        .project:hover, .experience:hover, .education:hover {
+            transform: translateX(10px);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .skill {
+            background-color: #03dac6;
+            color: #000;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: bold;
+            flex: 1 1 calc(25% - 10px);
+            box-sizing: border-box;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .skill:hover {
+            background-color: #bb86fc;
+            transform: scale(1.1);
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: #03dac6;
+            border-radius: 5px;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+
+        a {
+            color: #03dac6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 1.2em;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #bb86fc;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 15px;
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+        .footer a {
+            margin: 0 5px;
+            font-size: .5em;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #03dac6;
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            display: none;
+        }
+
+        #back-to-top:hover {
+            background-color: #bb86fc;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .skills {
+                flex-direction: column;
+            }
+
+            .skill {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="parallax"></div>
+        <div class="animated-item"></div>
+        <div class="animated-item"></div>
+        <div class="animated-item"></div>
+        <div class="animated-item"></div>
+        <div class="content">
+            <img src="crop.jpg" alt="Mohammed Amaan" class="profile-img fade-in">
+            <h1 class="fade-in">Mohammed Amaan</h1>
+            <p class="fade-in">Machine Learning and AI Enthusiast | Speech Analytics Specialist</p>
+            <div class="social-links fade-in">
+                <a href="https://www.linkedin.com/in/amaan-p/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/amaanp" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#courses">Courses</a>
+        <a href="#skills">Skills</a>
+    </nav>
+    <div class="container">
+        <section id="about" class="section fade-in">
+            <h2>About Me</h2>
+            <p>Hello! I'm Mohammed Amaan, a passionate Machine Learning and AI enthusiast with a strong background in speech analytics and natural language processing. My journey in AI began with a curiosity for understanding how machines can learn and make decisions, and I have since developed a deep interest in leveraging these technologies to solve real-world problems.</p>
+            <p>Throughout my career, I have worked on various projects that span from building robust machine learning models to developing end-to-end data processing pipelines. I am committed to continuous learning and staying up-to-date with the latest advancements in AI and machine learning.</p>
+        </section>
+
+        <section id="experience" class="section fade-in">
+            <h2>Experience</h2>
+          <div class="experience">
+                <h3>Research Intern - IIIT Hyderabad</h3>
+                <p><em>07/2024 - Present</em></p>
+                <p>Analyzing the variability in the spoken response of depressed and non-depressed individuals using a CNN-LSTM model. Managed a critical mental health project under Dr. Chiranjeevi Yarra, focusing on variabilities in depression responses.</p>
+            </div>
+            <div class="experience">
+                <h3>Industrial Engineering Intern - Academy of Skill Development</h3>
+                <p><em>08/2024 - Present</em></p>
+                <p>Engaged in an intensive learning program focused on advanced topics in Machine Learning, Artificial Intelligence, and Data Science.</p>
+            </div>
+        </section>
+
+        <section id="education" class="section fade-in">
+            <h2>Education</h2>
+            <div class="education">
+                <h3>Saintgits College of Engineering</h3>
+                <p>2021-2025</p>
+                <p>BTECH-Computer Science and Engineering - CGPA 7.5</p>
+            </div>
+            <div class="education">
+                <h3>THSS Angadippuram</h3>
+                <p>2019-2021</p>
+                <p>Plus Two Education with a percentage of 95.6</p>
+            </div>
+        </section>
+
+        <section id="projects" class="section fade-in">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>EMOTUNE</h3>
+                <p><em>05/2024 | IIITH</em></p>
+                <ul>
+                    <li>Developed advanced speech recognition technology.</li>
+                    <li>Focused on MFCC and chroma features in audio responses.</li>
+                    <li>Detected emotions and provided respective playlists according to user preferences.</li>
+                    <li>For more details on <a href="https://github.com/M0hammedd-Amaan/Emotune" target="_blank">Emotune</a>.</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Business Contract Validation Project</h3>
+                <p><em>07/2024 | Intel Unnati Industrial Training Program</em></p>
+                <ul>
+                    <li>Developed a robust contract validation system.</li>
+                    <li>Utilized ML techniques for data analysis and validation.</li>
+                    <li>Successfully met project goals and timelines.</li>
+                    <li>For more details on <a href="https://github.com/M0hammedd-Amaan/Business-Contract-Validation" target="_blank">Business-Contract-Validation</a>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="courses" class="section fade-in">
+            <h2>Courses & Certificates</h2>
+            <ul>
+                <li>The Complete 2023 Web Development by Dr. Angela Yu (Udemy)</li>
+                <li>The Bits and Bytes of Computer Networking by Google</li>
+                <li>Research Teaser Program on Speech Processing by IIITH</li>
+                <li>Reached top 5 in "Karthavya" National Level Hackathon on Solid Waste Management by Jyothi Engineering College</li>
+            </ul>
+        </section>
+
+        <section id="skills" class="section fade-in">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">Python</div>
+                <div class="skill">Machine Learning</div>
+                <div class="skill">Deep Learning</div>
+                <div class="skill">Natural Language Processing (NLP)</div>
+                <div class="skill">Speech Analytics</div>
+                <div class="skill">Data Analysis</div>
+                <div class="skill">TensorFlow</div>
+                <div class="skill">PyTorch</div>
+                <div class="skill">Scikit-Learn</div>
+                <div class="skill">Pandas</div>
+                <div class="skill">NumPy</div>
+                <div class="skill">React</div>
+            </div>
+        </section>
+    </div>
+
+    <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
+
+    <footer class="footer">
+        <p>© 2024 Mohammed Amaan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.scrollY > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(skillBar => {
+                const width = skillBar.getAttribute('data-progress');
+                skillBar.style.width = width + '%';
+            });
+
+            // Add color-changing background
+            const body = document.body;
+            let hue = 0;
+            setInterval(() => {
+                hue = (hue + 1) % 360;
+                body.style.background = `linear-gradient(45deg, 
+                    hsl(${hue}, 50%, 10%), 
+                    hsl(${(hue + 60) % 360}, 50%, 15%), 
+                    hsl(${(hue + 120) % 360}, 50%, 20%), 
+                    hsl(${(hue + 180) % 360}, 50%, 25%), 
+                    hsl(${(hue + 240) % 360}, 50%, 30%))`;
+            }, 100);
+
+            // Add more animated background items
+            const header = document.querySelector('header');
+            for (let i = 0; i < 10; i++) {
+                const item = document.createElement('div');
+                item.className = 'animated-item';
+                item.style.width = `${Math.random() * 50 + 20}px`;
+                item.style.height = item.style.width;
+                item.style.top = `${Math.random() * 100}%`;
+                item.style.left = `${Math.random() * 100}%`;
+                item.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                header.appendChild(item);
+            }
+        });
+    </script>
+</body>
+</html>

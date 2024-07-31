@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Amaan - Computer Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        :root {
+            --bg-color: #f0f0f0;
+            --container-bg: rgba(18, 18, 18, 0.9);
+            --profile-bg: rgba(30, 30, 30, 0.8);
+            --text-color: #e0e0e0;
+            --accent-color: #64B5F6;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            background-color: var(--container-bg);
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 1000px;
+            width: 90%;
+            animation: fadeIn 1s ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+        .profile, .details {
+            padding: 40px;
+        }
+        .profile {
+            background-color: var(--profile-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            width: 40%;
+        }
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            border: 4px solid var(--accent-color);
+        }
+        .profile img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        .profile h2 {
+            margin: 20px 0 10px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .profile p {
+            margin: 5px 0;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        .details {
+            width: 60%;
+        }
+        .about-box {
+            background-color: rgba(40, 40, 40, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: var(--profile-bg);
+        }
+        .details h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .details p {
+            margin: 15px 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .social {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            align-items: flex-start;
+        }
+        .social a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 18px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 50px;
+            background-color: rgba(100, 181, 246, 0.1);
+        }
+        .social a i {
+            margin-right: 10px;
+            width: 24px;
+        }
+        .social a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+            background-color: rgba(100, 181, 246, 0.2);
+        }
+        .know-more-btn {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 300% 300%;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+        .know-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.4);
+            animation: gradientBG 3s ease infinite;
+        }
+        .know-more-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.4);
+        }
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .skill-badge {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .skill-badge:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+            }
+            .profile, .details {
+                width: 100%;
+                padding: 20px;
+            }
+            .profile img {
+                width: 150px;
+                height: 150px;
+            }
+            .details h2 {
+                font-size: 28px;
+            }
+            .know-more-btn {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="crop.jpg" alt="Mohammed Amaan">
+            <h2>Mohammed Amaan</h2>
+            <p>Computer Engineer</p>
+            <p>Kerala, India</p>
+            <div class="social">
+                <a href="mailto:amaanextra123@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/M0hammedd-Amaan/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/amaan-p/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+        <div class="details">
+            <div class="about-box">
+                <h2>About Me</h2>
+                <p id="about-text"></p>
+                <div class="skill-badges">
+                    <span class="skill-badge">Machine Learning</span>
+                    <span class="skill-badge">AI</span>
+                    <span class="skill-badge">Speech Analytics</span>
+                    <span class="skill-badge">Python</span>
+                </div>
+            </div>
+            <button class="know-more-btn" onclick="navigateToHome()">Know More</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateToHome() {
+            window.location.href = 'home.html';
+        }
+
+        // Typing animation
+        const aboutText = "Passionate ML and AI student focused on speech analytics. Experienced in developing advanced speech recognition technologies and contract validation systems.";
+        let i = 0;
+        function typeWriter() {
+            if (i < aboutText.length) {
+                document.getElementById("about-text").innerHTML += aboutText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 30);
+            }
+        }
+        typeWriter();
+    </script>
+</body>
+</html>
